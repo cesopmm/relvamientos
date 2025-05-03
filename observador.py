@@ -1,4 +1,4 @@
-
+import datetime
 
 
 class Subject:
@@ -13,9 +13,12 @@ class Subject:
             self.observadores.remove(obj)
 
     def notificar(self, *args):
+        with open("registo de apertura.txt", "a") as f:
+            f.write(f"{datetime.datetime.now()} - Acción: {args[0]}\n")
+
         for observador in self.observadores:
             observador.update(args)
-            print("Se ha efecutado una carga")
+            
             
 class Carga(Subject):
     def __init__(self):
@@ -44,14 +47,11 @@ class ConcreteObserverA(Observador):
         
 
     def update(self, *args):
-        print("Actualización dentro de ObservadorConcretoA")
+        
         if args and len(args) > 0:
             self.estado = args [0]
         else:
             self.estado = self.observador_a.get_estado()
-        print("Estado = ", self.estado)
+        
 
-#tema1 = Carga()
-#observado_a = ConcreteObserverA(tema1)
-#tema1.set_estado(1)
 
