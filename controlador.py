@@ -17,7 +17,7 @@ class Controller:
 
 if __name__ == "__main__":
     master= Tk()
-    cont1 = Relevamiento(master)
+    cont1 = Controller(master)
     master.mainloop()
 
 
